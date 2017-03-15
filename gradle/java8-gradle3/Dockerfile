@@ -1,4 +1,4 @@
-FROM anapsix/alpine-java
+FROM senyor/java8:latest
 ENV GRADLE_VERSION=3.4.1
 ENV GRADLE_HOME=/opt/gradle-$GRADLE_VERSION
 ENV PATH=$PATH:$GRADLE_HOME/bin
