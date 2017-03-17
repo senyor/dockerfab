@@ -7,4 +7,5 @@ RUN wget http://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip
     && unzip gradle.zip \ 
     && rm -rf gradle.zip \
     && ln -s gradle-$GRADLE_VERSION gradle \
+    && apk update \
     && apk add git
