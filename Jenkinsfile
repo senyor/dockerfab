@@ -36,19 +36,19 @@ node ('linux && docker') {
     stage ('Build and push Gradle-Git docker images') {
 
         sh 'echo "Build java8-gradle3 docker image"'
-        sh 'docker build -t senyor/java8:latest -f ./gradle/java8-gradle3/Dockerfile .'
+        sh 'docker build -t senyor/java8-gradle3:latest -f ./gradle/java8-gradle3/Dockerfile .'
         sh 'docker push senyor/java8-gradle3:latest'
 
         sh 'echo "Build java8-gradle3-git2 docker image"'
-        sh 'docker build -t senyor/java8:latest -f ./gradle/java8-gradle3-git2/Dockerfile .'
+        sh 'docker build -t senyor/java8-gradle3-git2:latest -f ./gradle/java8-gradle3-git2/Dockerfile .'
         sh 'docker push senyor/java8-gradle3-git2:latest'
 
         sh 'echo "Build java8-gradle3-git2-docker docker image"'
-        sh 'docker build -t senyor/java8:latest -f ./gradle/java8-gradle3-git2-docker/Dockerfile .'
+        sh 'docker build -t senyor/java8-gradle3-git2-docker:latest -f ./gradle/java8-gradle3-git2-docker/Dockerfile .'
         sh 'docker push senyor/java8-gradle3-git2-docker:latest'
 
         sh 'echo "Build java8-gradle3-git2-docker-compose docker image"'
-        sh 'docker build -t senyor/java8:latest -f ./gradle/java8-gradle3-git2-docker-compose/Dockerfile .'
+        sh 'docker build -t senyor/java8-gradle3-git2-docker-compose:latest -f ./gradle/java8-gradle3-git2-docker-compose/Dockerfile .'
         sh 'docker push senyor/java8-gradle3-git2-docker-compose:latest'
     }
 }
