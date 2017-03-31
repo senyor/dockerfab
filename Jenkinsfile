@@ -5,7 +5,7 @@ node ('linux && docker') {
             sh "docker login -u ${REGISTRY_USER} -p ${REGISTRY_PASSWORD}"
         }
         checkout scm
-        sh 'docker rmi $(docker images -a | grep "^<none>" | awk "{print $3}") > /dev/null 2>&1'
+        sh 'docker rmi $(docker images -a | grep "^<none>" | awk \'{print $3}\') > /dev/null 2>&1'
     }
 
     stage ('Build and push Base docker images') {
