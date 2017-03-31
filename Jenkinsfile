@@ -1,7 +1,7 @@
 node ('linux && docker') {
 
     stage ('Prepare build') {
-        withCredentials([usernamePassword(credentialsId: 'ci-registry-user', passwordVariable: 'REGISTRY_PASSWORD', usernameVariable: 'REGISTRY_USER')]) {
+        withCredentials([usernamePassword(credentialsId: 'dockerhub-username-password', passwordVariable: 'REGISTRY_PASSWORD', usernameVariable: 'REGISTRY_USER')]) {
             sh "docker login -u ${REGISTRY_USER} -p ${REGISTRY_PASSWORD}"
         }
     }
