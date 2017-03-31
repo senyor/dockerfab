@@ -1,6 +1,6 @@
 node ('linux && docker') {
     stage ('Build Docker images') {
         sh 'echo "Build base docker image"'
-        sh 'docker build -t senyor/docker ./docker/docker/Dockerfile'
+        sh 'docker build -t senyor/docker -f ./docker/docker/Dockerfile .'
     }
 }
