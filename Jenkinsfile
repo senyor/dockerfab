@@ -1,4 +1,4 @@
-node ('linux && docker') {
+node ('linux && docker && builder') {
 
     stage ('Prepare build') {
         withCredentials([usernamePassword(credentialsId: 'dockerhub-username-password', passwordVariable: 'REGISTRY_PASSWORD', usernameVariable: 'REGISTRY_USER')]) {
