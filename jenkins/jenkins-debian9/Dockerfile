@@ -17,5 +17,5 @@ RUN apt-get update && \
     apt-get install -y docker-ce && \
     rm -rf /var/lib/apt/lists/* && \
     groupadd dockercoreos -g 233 && usermod -a -G docker,dockercoreos jenkins && \
-    curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/bin/docker-compose && \
+    curl -fsSL https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/bin/docker-compose && \
     chmod +x /usr/bin/docker-compose
