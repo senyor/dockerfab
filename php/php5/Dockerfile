@@ -1,5 +1,7 @@
 FROM php:5.6.32-fpm
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get update && apt-get upgrade -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
@@ -13,7 +15,9 @@ RUN apt-get update && apt-get upgrade -y \
     libsasl2-dev \
     zlib1g-dev \
     libicu-dev \
-    g++
+    g++ && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN docker-php-ext-install \
         bz2 \
         iconv \
