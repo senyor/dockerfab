@@ -19,14 +19,3 @@ RUN apt-get update && \
     groupadd dockercoreos -g 233 && usermod -a -G docker,dockercoreos jenkins && \
     curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/bin/docker-compose && \
     chmod +x /usr/bin/docker-compose
-
-#    systemctl enable docker.service && \
-# systemctl enable jenkins.service && \
-# sed -i 's#ExecStart=/usr/bin/dockerd -H fd://#ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375#g' /lib/systemd/system/docker.service && \
-# sed -i 's#DOCKER_OPTS=#DOCKER_OPTS="-H tcp://0.0.0.0:2375"#g' /etc/init.d/docker && \
-
-#ENTRYPOINT ["/lib/systemd/systemd"]
-
-#CMD [""]
-#CMD ["/bin/tini", "--", "/usr/local/bin/jenkins.sh"]
-
