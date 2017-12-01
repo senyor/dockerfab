@@ -35,8 +35,7 @@ RUN docker-php-ext-install \
     pecl install redis && docker-php-ext-enable redis && \
     yes '' | pecl install imagick && docker-php-ext-enable imagick
 
-ENV COMPOSER_ALLOW_SUPERUSER=1
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
+RUN COMPOSER_ALLOW_SUPERUSER=1 curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     composer global require --prefer-dist "fxp/composer-asset-plugin:*"
 
 RUN mkdir -p /opt/icu/icudt52l/ && \
