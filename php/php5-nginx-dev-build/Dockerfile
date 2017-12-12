@@ -3,6 +3,15 @@ FROM webdevops/php-nginx-dev:5.6
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt-get update && \
+    apt-get install -yq \
+        libmagickwand-dev \
+    && \
+    pecl install imagick && \
+    echo 'extension=imagick.so' >> /opt/docker/etc/php/php.webdevops.ini && \
+    apt-get remove -y \
+        libmagickwand-dev \
+    && \
     curl -fsSL https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     apt-get update -q && \
     apt-get install -y -q --no-install-recommends \
@@ -30,4 +39,5 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get install -y -q --no-install-recommends \
         yarn \
     && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    docker-image-cleanup
