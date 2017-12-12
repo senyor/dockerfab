@@ -18,4 +18,5 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     groupadd dockercoreos -g 233 && usermod -a -G docker,dockercoreos jenkins && \
     curl -fsSL https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/bin/docker-compose && \
-    chmod +x /usr/bin/docker-compose
+    chmod +x /usr/bin/docker-compose && \
+    curl -fsSL https://github.com/jwilder/docker-squash/releases/download/v0.2.0/docker-squash-linux-amd64-v0.2.0.tar.gz | tar -zxC /usr/local/bin
