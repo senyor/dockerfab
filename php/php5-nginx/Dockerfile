@@ -1,6 +1,7 @@
 FROM webdevops/php-nginx:5.6
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
+    docker-service enable postfix && \
     apt-get update && \
     apt-install \
         libmagickwand-dev \
