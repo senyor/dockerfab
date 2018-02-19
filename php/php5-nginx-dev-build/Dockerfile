@@ -88,6 +88,21 @@ RUN GK_VERSION=$(if [ ${GECKODRIVER_VERSION:-latest} = "latest" ]; \
 # Install 'pulseaudio' package to support WebRTC audio streams
 RUN apt-get update && apt-get install -y pulseaudio
 
+# Install docker and docker-compose executables (use with option '-v /var/run/docker.sock:/var/run/docker.sock')
+RUN apt-get update && \
+    apt-install --no-install-recommends \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg2 \
+    software-properties-common && \
+    curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | apt-key add - && \
+    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") $(lsb_release -cs) stable" && \
+    apt-get update && \
+    apt-install docker-ce && \
+    curl -fsSL https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose && \
+    chmod +x /usr/local/bin/docker-compose
+
 RUN rm -rf /var/lib/apt/lists/* && \
     docker-image-cleanup
 
