@@ -12,6 +12,8 @@ sed -ri -e "s/^(relayhost = ).*/\1[$MAIL_HOSTNAME]:$MAIL_PORT/" \
         -e "s/^(mydestination = ).*/\1localhost/" /etc/postfix/main.cf
 
 { \
+    echo "smtp_use_tls = yes"; \
+    echo "smtp_tls_CAfile = $MAIL_SERVER_CA_CERTFILE"; \
     echo "smtp_sasl_auth_enable = yes"; \
     echo "smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd"; \
     echo "smtp_sasl_security_options = noanonymous"; \
